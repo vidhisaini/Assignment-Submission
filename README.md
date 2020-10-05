@@ -61,6 +61,13 @@ class Posts(models.Model):
     subreddit = models.URLField(max_length=400, blank=True)
 ```
 
+## Screenshots
+<p float="left">
+  <img src="https://i.imgur.com/NfQMn9X.pngg" width="49%" />
+  <img src="https://i.imgur.com/waShQHb.png" width="49%" />
+</p> 
+<img src="https://i.imgur.com/a7EcgQY.png"/>
+
 ## Note
 - The embedded images in posts with external URLs are also considered as external links.
 - Minor changes were made to the current project to be able to host it on Heroku.
