@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <title>Reddit Toplinks App</title>
+    <link rel="icon" href="{% static 'reddit.png' %}" type="image/png" sizes="16x16">
+  </head>
+  <body>
+    <div class="app">
+      <div class="bg"></div>
+
+      <form>
+        <header>
+          <img
+            src="{% static 'avatar.png' %}"
+          />
+        </header>
+        <h2>Reddit TopLinks App</h2>
+      </form>
+
+      <footer>
+        <button><a href="/login">Login to Continue</a></button>
+      </footer>
+    </div>
+  </body>
+</html>

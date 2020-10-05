@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Reddit Toplinks App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="icon" href="{% static 'reddit.png' %}" type="image/png" sizes="16x16">
+</head>
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"></div>
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="#">Dashboard</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.reddit.com/u/{{username}}" target="_blank">{{username}}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class = "container-fluid">
+		<!-- Author Table -->
+		<div class="row mt-4">
+			<div class="col-lg-6">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th style="width: 10%">S.No</th>
+							<th style="width: 20%">Author Name</th>
+							<th style="width: 20%">No. Links</th>
+							<th style="width: 50%">Distribution</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for name,count in top_authors %}
+						{% if forloop.first %}
+						<tr>
+							<td style="width: 10%">{{ forloop.counter }}</td>
+							<td style="width: 20%"><a href="https://www.reddit.com/u/{{name}}" target="_blank">{{name}}</a></td>
+							<td style="width: 20%">{{count}}</td>
+							<td style="width: 50%" rowspan="5"><div id="topauthorchart"></div></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td style="width: 10%">{{ forloop.counter }}</td>
+							<td style="width: 20%"><a href="https://www.reddit.com/u/{{name}}"target="_blank">{{name}}</a></td>
+							<td style="width: 20%">{{count}}</td>
+						</tr>
+						{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-6">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th style="width: 10%">S.No</th>
+							<th style="width: 20%">Domain</th>
+							<th style="width: 20%">No. Links</th>
+							<th style="width: 50%">Distribution</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for link,count in top_links %}
+						{% if forloop.first %}
+						<tr>
+							<td style="width: 10%">{{ forloop.counter }}</td>
+							<td style="width: 20%"><a href="https://www.{{link}}" target="_blank">{{link}}</a></td>
+							<td style="width: 20%">{{count}}</td>
+							<td style="width: 50%" rowspan="5"><div id="topdomainchart"></div></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td style="width: 10%">{{ forloop.counter }}</td>
+							<td style="width: 20%"><a href="https://www.{{link}}" target="_blank">{{link}}</a></td>
+							<td style="width: 20%">{{count}}</td>
+						</tr>
+						{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<!-- Posts Display -->
+		<div class="row mt-4 mb-4">
+			<div class="col-lg-12">
+				<table class="table table-bordered" style="width:100%">
+					<thead class="thead-dark">
+						<th style="text-align:center;" colspan="3">Posts</th>
+					</thead>
+					<thead>
+						<tr>
+							<th>Post Title</th>
+							<th>Subreddit</th>
+							<th>Author</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for post in posts %}
+						<tr>
+							<td><a href="{{post.link}}" target="_blank">{{ post.title }}</a></td>
+							<td><a href="https://www.reddit.com/r/{{post.subreddit}}" target="_black">r/{{post.subreddit}}</a></td>
+							<td><a href="https://www.reddit.com/user/{{post.author}}" target="_black">u/{{post.author}}</a></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="container">
+		<div class="reddit-posts">
+			{% for post in posts %}
+			<div class="post">
+				<h1><a href="{{post.link}}" target="_blank">{{ post.title }}</a></h1>
+				<h3>Subreddit - {{post.subreddit}}</h3>
+				<br />
+				<h3><a href="https://www.reddit.com/user/{{post.author}}" target="_black">- {{post.author}}</a></h3>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="top-user">
+			<div>
+				<h1>Top Authors</h1>
+				<br />
+				{% for name,count in top_authors %}
+				<h3> <a href="https://www.reddit.com/user/{{name}}">-> {{name}}, {{count}}</a></h3>
+				{% endfor %}
+				<br />
+				<h1>Top Domains</h2>
+					<br>
+				</div>
+				
+				<div>
+					{% for link,count in top_links %}
+					<h3><a href="https://{{link}}" target="_blank">-> {{link}}, {{count}}</a></h3>
+					{% endfor %}
+				</div>
+			</div>
+		</div> -->
+	</body>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawauthorChart);
+google.charts.setOnLoadCallback(drawdomainChart);
+
+// Draw the chart and set the chart values
+function drawauthorChart() {
+	var data = google.visualization.arrayToDataTable([
+		['Author', 'Number of Links'],
+		{% for name,count in top_authors %}
+		['{{name}}',  {{count}}],
+		{% endfor %}
+		]);
+	// Optional; add a title and set the width and height of the chart
+	var options = {'title':'Top Authors', 'width':'auto', 'height':'auto',is3D: true};
+
+	// Display the chart inside the <div> element with id="piechart"
+	var chart = new google.visualization.PieChart(document.getElementById('topauthorchart'));
+	chart.draw(data, options);
+}
+
+// Draw the chart and set the chart values
+function drawdomainChart() {
+	var data = google.visualization.arrayToDataTable([
+		['Domain', 'Number of Links'],
+		{% for link,count in top_links %}
+		['{{link}}',  {{count}}],
+		{% endfor %}
+		]);
+	// Optional; add a title and set the width and height of the chart
+	var options = {'title':'Top Domain', 'width':'auto', 'height':'auto',is3D: true};
+
+	// Display the chart inside the <div> element with id="piechart"
+	var chart = new google.visualization.PieChart(document.getElementById('topdomainchart'));
+	chart.draw(data, options);
+}
+
+
+</script>
+
+</html>
