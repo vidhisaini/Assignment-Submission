@@ -64,7 +64,7 @@ class Posts(models.Model):
 ## Screenshots
 <p float="left">
   <img src="https://i.imgur.com/NfQMn9X.pngg" width="49%" />
-  <img src="https://i.imgur.com/waShQHb.png" width="49%" />
+  <img src="https://i.imgur.com/IuiWNaZ.png" width="49%" />
 </p> 
 <img src="https://i.imgur.com/a7EcgQY.png"/>
 
