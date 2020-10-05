@@ -1,4 +1,4 @@
-# Vouch Assignement
+# Vouch Assignment
 This is a submission for the assignment by Vouch Insurtech for the Position of Software Engineer. 
 
 The app provides insights abouts links shared in the Subreddits that you follow.
@@ -29,6 +29,26 @@ CLIENT_SECRET=<Your Reddit Client Secret>
 - Go to Homepage and Press Login
 - Approve the App to see data from your account
 - You will be redirected to the dashboard which will show all the required information.
+
+## Technology Stack
+
+- Programming Languages
+    - Python 3.6
+    
+- Frameworks
+  - Django 3.1.2
+
+- Database
+     - PostgreSQL
+
+- Frontend
+    - Jinja
+    - Bootstrap 4
+    - HTML 5
+    - CSS 3
+
+- APIs
+    - Reddit Api
 
 ## Database Schema
 ```
